@@ -1,6 +1,6 @@
 using src;
 
-namespace tests;
+namespace tests.MixedTests;
 
 public class CalculatorTests
 {

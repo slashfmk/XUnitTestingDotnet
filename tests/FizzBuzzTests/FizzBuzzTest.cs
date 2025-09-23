@@ -23,7 +23,6 @@ public class FizzBuzzTest
         Assert.Equal("Fizz", result);
     }
     
-    
     [Fact]
     public void Divide_ANumberThatIsDivisibleByFive_ReturnsBuzz()
     {
