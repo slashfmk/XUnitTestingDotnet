@@ -5,6 +5,7 @@ namespace tests.MixedTests;
 public class CalculatorTests
 {
     private readonly Calculator _calculator;
+      
 
     public CalculatorTests()
     {
