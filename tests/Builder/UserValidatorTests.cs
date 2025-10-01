@@ -16,8 +16,11 @@ public class UserValidatorTests
         var resultIsAdult = userValidator.IsAdult(person);
         var resultHasName = userValidator.HasValidName(person);
         // Assert
-        Assert.True(resultIsAdult, $"This user is not an adult");
-        Assert.True(resultHasName, $"No name provided!");
+        // Assert.True(resultIsAdult, $"This user is not an adult");
+        // Assert.True(resultHasName, $"No name provided!");
+        
+        Assert.Equal(expectedResult, resultHasName);
+        Assert.Equal(expectedResult, resultIsAdult);
     }
     
     
@@ -47,8 +50,11 @@ public class UserValidatorTests
         var resultIsAdult = userValidator.IsAdult(person);
         var resultHasName = userValidator.HasValidName(person);
         // Assert
-        Assert.True(resultIsAdult, $"This user is not an adult");
-        Assert.True(resultHasName, $"No name provided!");
+        // Assert.True(resultIsAdult, $"This user is not an adult");
+        // Assert.True(resultHasName, $"No name provided!");
+        
+        Assert.Equal(expectedResult, resultHasName);
+        Assert.Equal(expectedResult, resultIsAdult);
     }
 
     
@@ -60,7 +66,7 @@ public class UserValidatorTests
         ).WithTestDisplayName("My test");
         
         yield return new TheoryDataRow<Person, bool>(
-            new Person { Age = 12, Name = "Vicky", Title = "Scientist" }, false
+            new Person { Age = 12, Name = "", Title = "Scientist" }, false
         ).WithTestDisplayName("My testAgain");
     }
 
