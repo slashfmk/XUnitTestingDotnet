@@ -5,6 +5,7 @@ namespace tests.Builder;
 
 public class UserValidatorTests
 {
+    
     [Theory]
     [ClassData(typeof(UserData))]
     public void Check_UserValidation_returnsBooleanTrueState(Person person, bool expectedResult)
@@ -20,7 +21,6 @@ public class UserValidatorTests
     }
     
     
-
     /**
      * Using the static method
      */
@@ -32,12 +32,11 @@ public class UserValidatorTests
     }
     
     
-    
     /**
      * The code below
      * Version 2 with xUnit 3 only
+     * Safer way to Test
      */
-    
     [Theory]
     [MemberData(nameof(GetValidationScenariosV2))]
     public void Check_UserValidation_returnsBooleanTrueStateV2(Person person, bool expectedResult)
@@ -53,7 +52,7 @@ public class UserValidatorTests
     }
 
     
-    // Safe theoryData with multiple generic parameters
+    // Safe theoryDataRow with multiple generic parameters (MetaData)
     public static IEnumerable<TheoryDataRow<Person, bool>> GetValidationScenariosV2()
     {
         yield return new TheoryDataRow<Person, bool>(
@@ -62,7 +61,18 @@ public class UserValidatorTests
         
         yield return new TheoryDataRow<Person, bool>(
             new Person { Age = 12, Name = "Vicky", Title = "Scientist" }, false
-        ).WithTestDisplayName("My test");
+        ).WithTestDisplayName("My testAgain");
     }
+
+    // Safe theoryData with multiple generic parameters (No MetaData)
+    public static TheoryData<Person, bool> GetValidationScenariosV3() => new()
+            {
+                {
+                    new Person { Age = 25, Name = "Vicky", Title = "Scientist" }, true
+                },
+                {
+                    new Person { Age = 12, Name = "Vicky", Title = "Scientist" }, false
+                }
+            };
     
 }
